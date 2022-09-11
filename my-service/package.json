@@ -1,0 +1,14 @@
+{
+  "name": "my-service",
+  "version": "1.0.0",
+  "author": "Monstro da Banana",
+  "description": "Node.js Server on Docker",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "amqplib": "^0.10.3"
+  },
+  "type": "module"
+}

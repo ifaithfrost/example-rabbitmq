@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+
+  rabbitmq:
+    image: "rabbitmq:3.8-management-alpine"
+    container_name: rabbitmq
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
+
+  gateway:
+    build: "./gateway"
+    container_name: gateway
+    ports:
+      - 4000:3003
+    depends_on:
+      - rabbitmq
+
+  my-service:
+    build: "./my-service"
+    container_name: my-service
+    ports:
+      - 4001:3003
+    depends_on: 
+      - rabbitmq
+
